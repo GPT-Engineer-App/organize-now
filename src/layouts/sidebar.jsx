@@ -12,6 +12,7 @@ import { cn } from "@/lib/utils";
 import { CircleUser, Menu, Package2 } from "lucide-react";
 import { NavLink, Outlet } from "react-router-dom";
 import { navItems } from "../App";
+import AddProjectModal from "@/components/AddProjectModal";
 
 const Layout = () => {
   return (
@@ -37,7 +38,7 @@ const Sidebar = () => (
       <div className="flex h-14 items-center border-b px-4 lg:h-[60px] lg:px-6">
         <NavLink to="/" className="flex items-center gap-2 font-semibold">
           <Package2 className="h-6 w-6" />
-          <span>Acme Inc</span>
+          <span>TodoApp</span>
         </NavLink>
       </div>
       <div className="flex-1">
@@ -49,6 +50,23 @@ const Sidebar = () => (
             </SidebarNavLink>
           ))}
         </nav>
+        <div className="mt-4 px-2 lg:px-4">
+          <h2 className="text-lg font-semibold mb-2">Projects</h2>
+          <nav className="grid items-start text-sm font-medium gap-2">
+            {/* Placeholder for project links */}
+            <SidebarNavLink to="/project/1">
+              <Package2 className="h-4 w-4" />
+              Project 1
+            </SidebarNavLink>
+            <SidebarNavLink to="/project/2">
+              <Package2 className="h-4 w-4" />
+              Project 2
+            </SidebarNavLink>
+          </nav>
+          <div className="mt-4">
+            <AddProjectModal />
+          </div>
+        </div>
       </div>
     </div>
   </div>
@@ -69,13 +87,30 @@ const MobileSidebar = () => (
           className="flex items-center gap-2 text-lg font-semibold mb-4"
         >
           <Package2 className="h-6 w-6" />
-          <span className="sr-only">Acme Inc</span>
+          <span className="sr-only">TodoApp</span>
         </NavLink>
         {navItems.map((item) => (
           <SidebarNavLink key={item.to} to={item.to}>
             {item.title}
           </SidebarNavLink>
         ))}
+        <div className="mt-4">
+          <h2 className="text-lg font-semibold mb-2">Projects</h2>
+          <nav className="grid items-start text-sm font-medium gap-2">
+            {/* Placeholder for project links */}
+            <SidebarNavLink to="/project/1">
+              <Package2 className="h-4 w-4" />
+              Project 1
+            </SidebarNavLink>
+            <SidebarNavLink to="/project/2">
+              <Package2 className="h-4 w-4" />
+              Project 2
+            </SidebarNavLink>
+          </nav>
+          <div className="mt-4">
+            <AddProjectModal />
+          </div>
+        </div>
       </nav>
     </SheetContent>
   </Sheet>
